@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SessionProvider } from "@/lib/session";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 
 export const metadata: Metadata = {
   title: "Apideck Bank Feeds Sync — Interactive Demo",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen text-ink-900 antialiased">
-        <SessionProvider>{children}</SessionProvider>
+        <AnalyticsProvider source="sample:bank-feeds-sync">
+          <SessionProvider>{children}</SessionProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );
